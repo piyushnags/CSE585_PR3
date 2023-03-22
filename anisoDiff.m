@@ -36,7 +36,7 @@ ylo = 2;   % Can't process first row
 yhi = N-1; % Can't process last  row
 
 % Compute the filtered output image
-new_img = zeros('like', cur_img);
+new_img = zeros(size(cur_img),'like',cur_img);
 for x = xlo : xhi        % Don't consider boundary pixels that can't
     for y = ylo : yhi    %    be processed!
         % Changes in NSEW
