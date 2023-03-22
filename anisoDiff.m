@@ -18,7 +18,7 @@ M = size(f,1);
 N = size(f,2);
 
 % Convert f to a 16-bit number, so we can do  sums > 255 correctly
-cur_img = uint16(f);
+cur_img = double(f);
 
 % Selection of g(*) function
 if strcmp(mode,'exp')
@@ -26,7 +26,7 @@ if strcmp(mode,'exp')
 else
     g = @(x) 1 / (1 + (x/k).^2);
 end
-
+g(1)
 % Define the coordinate limits for output pixels that can be properly
 %     computed by the 3X3 filter
 
