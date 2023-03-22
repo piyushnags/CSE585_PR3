@@ -8,13 +8,11 @@
 function [mean_output] = mean5x5(f)
 
 %  Fill the output image with zeroes first
-mean_output = zeros('like',f);
+mean_output = zeros(size(f), 'like', f);
 M = size(f,1);
 N = size(f,2);
 
-% Convert f to a 16-bit number, so we can do  sums > 255 correctly
-
-g = uint16(f);
+g = f;
 
 % Define the coordinate limits for output pixels that can be properly
 %     computed by the 3X3 filter
@@ -29,7 +27,7 @@ yhi = N-2; % Can't process last  row
 for x = xlo : xhi        % Don't consider boundary pixels that can't
     for y = ylo : yhi    %    be processed! 
         for i = -2 : 2
-            for j = -2 : 2   
+            for j = -2 : 2            
                 mean_output(x,y) = g(x-i,y-j) + mean_output(x,y);
             end
         end

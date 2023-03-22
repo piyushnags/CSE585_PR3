@@ -9,13 +9,14 @@ function [snnm] = snnm5x5(f)
 %  Fill the output image with zeroes first
 %  (Step below is admittedly very cumbersome!)
 
-snnm = zeros('like',f);
+snnm = zeros(size(f), 'like', f);
 M = size(f,1);
 N = size(f,2);
 
 % Convert f to a 16-bit number, so we can do  sums > 255 correctly
 
-g = uint16(f);
+% g = uint16(f);
+g = f;
 
 % Define the coordinate limits for output pixels that can be properly
 %     computed by the 3X3 filter

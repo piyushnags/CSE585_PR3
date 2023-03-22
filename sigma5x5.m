@@ -1,10 +1,11 @@
 function [out] = sigma5x5(f, sigma)
 
-out = zeros('like', f);
+out = zeros(size(f), 'like', f);
 [M, N] = size(f);
 
 % Convert f to a 16-bit number, so we can do sums > 255 correctly
-g = uint16(f);
+% g = uint16(f);
+g = f;
 
 % Define the coordinate limits for output pixels that can be properly
 % computed by the 3X3 filter

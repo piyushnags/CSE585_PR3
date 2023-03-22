@@ -1,4 +1,5 @@
+clear;
 fname = './Images/disk.gif';
 
 img = imread(fname);
-size(img)
+disk_results(img)

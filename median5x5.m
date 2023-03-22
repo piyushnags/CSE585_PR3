@@ -10,13 +10,14 @@ function [median] = median5x5(f)
 %  Fill the output image with zeroes first
 %  (Step below is admittedly very cumbersome!)
 
-median = zeros('like',f);
+median = zeros(size(f), 'like', f);
 M = size(f,1);
 N = size(f,2);
 
 % Convert f to a 16-bit number, so we can do  sums > 255 correctly
 
-g = uint16(f);
+% g = uint16(f);
+g = f;
 
 % Define the coordinate limits for output pixels that can be properly
 %     computed by the 3X3 filter
@@ -32,11 +33,11 @@ for x = xlo : xhi        % Don't consider boundary pixels that can't
     for y = ylo : yhi    %    be processed! 
         temp_num = zeros(5,5);
         for i = -2 : 2
-            for j = -2 : 2   
+            for j = -2 : 2
                 temp_num(i,j) = g(x-i,y-j);
             end
         end
-        temp_num = reshape(temp_num, [1 25]);
+        temp_num = reshape(temp_num, 1, 25);
         temp_num = sort(temp_num);
         median(x,y) = temp_num(13);
     end

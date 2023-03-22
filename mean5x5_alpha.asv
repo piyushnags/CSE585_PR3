@@ -4,14 +4,13 @@
 % in an image
 %
 % <ORIGINAL LINES 6-31 CUT FOR THIS DEMO>
-function [out] = mean5x5_alpha(f, alpha)
+function [mean] = mean5x5_alpha(f, alpha)
 
-out = zeros(size(f), 'like', f);
+mean = zeros('like', f);
 [M, N] = size(f);
 
 % Convert f to a 16-bit number, so we can do sums > 255 correctly
-% g = uint16(f);
-g = f;
+g = uint16(f);
 
 % Define the coordinate limits for output pixels that can be properly
 % computed by the 3X3 filter
@@ -28,10 +27,16 @@ trim = floor(alpha*25);
 for x = xlo : xhi % Don't consider boundary pixels that can't
     for y = ylo : yhi % be processed!
         tmp = f(x-2:x+2, y-2:y+2);
+%         for i = -2 : 2
+%             for j = -2 : 2
+%                 %mean(x,y) = g(x-i,y-j) + mean(x,y);
+%                 
+%             end
+%         end
         tmp = sort(reshape(tmp, 25, 1));
         tmp = tmp(trim + 1: end - trim);
-        out(x,y) = mean(tmp);
+        mean(x,y) = mean(x,y) / (25 - 2*trim).;
     end
 end
 % Convert back to an 8-bit image
-out = uint8(out);
+mean = uint8(mean);
