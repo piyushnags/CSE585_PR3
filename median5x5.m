@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%  Function mean3x3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%  Function median3x3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Purpose:  
 %      Compute a 5x5 median (neighborhood average) filter at each pixel 
 %           in an image 
