@@ -31,12 +31,15 @@ yhi = N-2; % Can't process last 2 row
 
 for x = xlo : xhi        % Don't consider boundary pixels that can't
     for y = ylo : yhi    %    be processed! 
-        temp_num = zeros(5,5);
-        for i = -2 : 2
-            for j = -2 : 2
-                temp_num(i,j) = g(x-i,y-j);
-            end
-        end
+%         temp_num = zeros(5,5);
+%         for i = -2 : 2
+%             for j = -2 : 2
+%                 i
+%                 j
+%                 temp_num(x,y) = g(x-i,y-j);
+%             end
+%         end
+        temp_num = f(x-2:x+2,y-2:y+2);
         temp_num = reshape(temp_num, 1, 25);
         temp_num = sort(temp_num);
         median(x,y) = temp_num(13);
