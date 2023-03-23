@@ -26,7 +26,7 @@ if strcmp(mode,'exp')
 else
     g = @(x) 1 / (1 + (x/k).^2);
 end
-g(1)
+
 % Define the coordinate limits for output pixels that can be properly
 %     computed by the 3X3 filter
 
