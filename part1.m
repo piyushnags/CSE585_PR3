@@ -14,11 +14,11 @@ imwrite(sigma_result, strcat("part1img/sigma_", num2str(0), ".png"))
 imwrite(snnm_result, strcat("part1img/snnm_", num2str(0), ".png"))
 
 for i = 1:4
-    mean_result = mean5x5(mean_result);
+    mean_result = mean5x5(double(mean_result));
     median_result = median5x5(median_result);
     mean_alpha_result = mean5x5_alpha(mean_alpha_result, 0.25);
     sigma_result = sigma5x5(sigma_result, 20);
-    snnm_result = snnm5x5(snnm_result);
+    snnm_result = snnm5x5(double(snnm_result));
 
     hmean = histogram(mean_result);
     hmedian = histogram(median_result);
