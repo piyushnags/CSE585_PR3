@@ -22,7 +22,7 @@ yhi = N-2; % Can't process last two columns
 for x = xlo : xhi % Don't consider boundary pixels that can't
     for y = ylo : yhi % be processed!
         tmp = f(x-2:x+2, y-2:y+2);
-        tmp = sort(reshape(tmp, 25, 1));
+        tmp = (reshape(tmp, 25, 1));
         m_ = tmp(13);
         tmp_ = tmp( abs(tmp - m_) <= 2*sigma);
         out(x,y) = mean(tmp_);
